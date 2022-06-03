@@ -1,4 +1,10 @@
-import { IsBoolean, IsNotEmpty, IsString, MinLength } from 'class-validator';
+import {
+  IsBoolean,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  MinLength,
+} from 'class-validator';
 
 export class TrainCreateDTO {
   @IsNotEmpty()
@@ -15,6 +21,23 @@ export class TrainCreateDTO {
   company: string;
 
   @IsNotEmpty()
+  @IsBoolean()
+  inService: boolean;
+}
+
+export class TrainUpdateDTO {
+  @IsOptional()
+  @IsNotEmpty()
+  @MinLength(3)
+  name: string;
+
+  @IsOptional()
+  @IsNotEmpty()
+  color: string;
+  @IsOptional()
+  @IsNotEmpty()
+  company: string;
+  @IsOptional()
   @IsBoolean()
   inService: boolean;
 }
